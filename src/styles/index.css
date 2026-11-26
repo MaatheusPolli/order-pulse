@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --canvas: 244 245 248;
+    --surface: 255 255 255;
+    --surface-muted: 241 243 247;
+    --border: 222 226 233;
+    --fg: 17 24 39;
+    --fg-muted: 82 91 107;
+    --brand: 67 56 202;
+    --brand-fg: 255 255 255;
+    /* Paleta categórica dos canais — ordem fixa, validada para daltonismo (claro e escuro). */
+    --ch-vtex: #2a78d6;
+    --ch-mercadolivre: #eb6834;
+    --ch-magento: #1baf7a;
+    --ch-tray: #eda100;
+    color-scheme: light;
+  }
+
+  .dark {
+    --canvas: 11 14 20;
+    --surface: 20 24 33;
+    --surface-muted: 29 34 46;
+    --border: 45 52 68;
+    --fg: 236 239 244;
+    --fg-muted: 160 168 184;
+    --brand: 139 132 255;
+    --brand-fg: 11 14 20;
+    --ch-vtex: #3987e5;
+    --ch-mercadolivre: #d95926;
+    --ch-magento: #199e70;
+    --ch-tray: #c98500;
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-canvas text-fg antialiased;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  body {
+    @apply min-h-screen bg-canvas;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-canvas;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-border bg-surface shadow-sm;
+  }
+
+  .input {
+    @apply h-9 w-full rounded-md border border-border bg-surface px-3 text-sm text-fg placeholder:text-fg-muted
+      focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-0;
+  }
+
+  .label {
+    @apply mb-1 block text-xs font-medium uppercase tracking-wide text-fg-muted;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
