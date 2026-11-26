@@ -34,6 +34,8 @@ jobs:
       # Fallback de SPA: o Pages serve 404.html para rotas como /orders/OP-000123.
       - run: cp dist/index.html dist/404.html
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
