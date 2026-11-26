@@ -59,7 +59,8 @@ function installForeignSignalRequestBridge() {
       } catch (error) {
         const init = args[1];
         if (!init?.signal || !(error instanceof TypeError)) throw error;
-        const { signal: _foreignSignal, ...rest } = init;
+        const rest: RequestInit = { ...init };
+        delete rest.signal;
         return Reflect.construct(target, [args[0], rest]);
       }
     },
